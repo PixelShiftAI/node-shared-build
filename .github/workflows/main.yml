@@ -16,7 +16,6 @@ jobs:
 
     - name: Set Android NDK
       run: echo "::set-env name=ANDROID_NDK_HOME::$ANDROID_SDK_ROOT/ndk-bundle"
-                       
 
     - name: Build
       run: ./build.sh build-${{matrix.build}} ${{matrix.node}}
@@ -24,4 +23,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: lib-${{matrix.build}}-${{matrix.node}}
-        path: node/out/Release/lib.target
+        path: node-${{matrix.node}}/out/Release/lib.target

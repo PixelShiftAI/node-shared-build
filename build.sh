@@ -17,12 +17,12 @@ download_and_extract() {
 }
 
 
-build_android_arm64() {
+build-android-arm64() {
   ./android-configure $ANDROID_NDK_HOME arm64 23
   make -j4
 }
 
-build_x86_64() {
+build-x86-64() {
   ./configure --dest-cpu x86_64
   make -j4
 }

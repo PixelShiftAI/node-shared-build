@@ -3,36 +3,24 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  build-android_arm64:
+  build-shared:
     runs-on:  ubuntu-18.04
-    
-    env:
-      TAG: 14.2.0
 
+    strategy:
+      matrix:
+        node: [ 14.2.0 ]
+        build: [linux-x86-64, android-arm64]
+
+    env:
+      ANDROID_NDK_HOME: $ANDROID_SDK_ROOT/ndk-bundle
+    
     steps:
     - uses: actions/checkout@v2
 
     - name: Build
-      run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android_arm64 $TAG
+      run: ./build.sh build-${{matrix.build}} ${{matrix.node}}
     
     - uses: actions/upload-artifact@v2
       with:
-        name: lib-${{env.TAG}}-android-arm64
-        path: node/out/Release/lib.target
-
-  build-x86_64:
-    runs-on:  ubuntu-18.04
-    
-    env:
-      TAG: 14.2.0
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Build
-      run: ./build.sh build_x86_64
-    
-    - uses: actions/upload-artifact@v2
-      with:
-        name: lib-${{env.TAG}}-linux-x86-64
+        name: lib-${{matrix.build}}-${{matrix.node}}
         path: node/out/Release/lib.target

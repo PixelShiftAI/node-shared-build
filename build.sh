@@ -13,23 +13,20 @@ download_and_extract() {
 
   curl -L https://github.com/nodejs/node/archive/${FILENAME} > $FILENAME
   tar zxvf "$FILENAME"
-  mv node-$TAG node
-  cp configure node/
+  cp configure node-$TAG/
 }
 
 
 build_android_arm64() {
   ./android-configure $ANDROID_NDK_HOME arm64 23
   make -j4
-  make tar-headers
 }
 
 build_x86_64() {
   ./configure --dest-cpu x86_64
   make -j4
-  make tar-headers
 }
 
 # Run in subshell 
 download_and_extract > /dev/null
-(cd node && $CMD)
+(cd node-$TAG && $CMD)

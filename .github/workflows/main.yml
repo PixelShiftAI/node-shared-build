@@ -15,9 +15,9 @@ jobs:
     - name: Build
       run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android_arm64 $TAG
     
-    - uses: actions/download-artifact@v2
+    - uses: actions/upload-artifact@v2
       with:
-        name: shared-library
+        name: lib-${{env.TAG}}-android-arm64
         path: node/out/Release/lib.target
 
   build-x86_64:
@@ -32,7 +32,7 @@ jobs:
     - name: Build
       run: ./build.sh build_x86_64
     
-    - uses: actions/download-artifact@v2
+    - uses: actions/upload-artifact@v2
       with:
-        name: shared-library
+        name: lib-${{env.TAG}}-linux-x86-64
         path: node/out/Release/lib.target

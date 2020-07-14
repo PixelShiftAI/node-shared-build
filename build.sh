@@ -13,7 +13,8 @@ download_and_extract() {
 
   curl -L https://github.com/nodejs/node/archive/${FILENAME} > $FILENAME
   tar zxvf "$FILENAME"
-  cp configure node-$TAG/
+  mv node-$TAG node
+  cp configure node/
 }
 
 
@@ -31,5 +32,4 @@ build_x86_64() {
 
 # Run in subshell 
 download_and_extract > /dev/null
-cp configure node-$TAG/
-(cd node-$TAG && $CMD)
+(cd node && $CMD)

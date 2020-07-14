@@ -18,9 +18,21 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: shared-library
-        path: node-$TAG/out/Release/lib.target
+        path: node/out/Release/lib.target
 
+  build-x86_64:
+    runs-on:  ubuntu-18.04
+    
+    env:
+      TAG: 14.2.0
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: ./build.sh build_x86_64
+    
     - uses: actions/download-artifact@v2
       with:
         name: shared-library
-        path: node-$TAG/out/Release/node-v$TAG-headers.tar.gz
+        path: node/out/Release/lib.target

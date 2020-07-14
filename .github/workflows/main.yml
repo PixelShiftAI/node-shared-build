@@ -3,7 +3,7 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  build-android:
+  build-android_arm64:
     runs-on:  ubuntu-18.04
     
     env:
@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build
-      run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android $TAG
+      run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android_arm64 $TAG
     
     - uses: actions/download-artifact@v2
       with:

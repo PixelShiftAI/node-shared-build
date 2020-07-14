@@ -1,0 +1,21 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build-android-14-2-0:
+    runs-on:  ubuntu-18.04
+    
+    env:
+      TAG: 14.2.0
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android $TAG
+    
+    - uses: actions/download-artifact@v2
+      with:
+        name: out
+        path: node-$TAG/out

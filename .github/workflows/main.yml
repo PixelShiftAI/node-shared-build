@@ -3,7 +3,7 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  build-android-14-2-0:
+  build-android:
     runs-on:  ubuntu-18.04
     
     env:
@@ -12,10 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Configure
+    - name: Build
       run: ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk-bundle ./build.sh build_android $TAG
     
     - uses: actions/download-artifact@v2
       with:
-        name: out
-        path: node-$TAG/out
+        name: shared-library
+        path: node-$TAG/out/Release/lib.target

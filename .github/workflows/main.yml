@@ -19,3 +19,8 @@ jobs:
       with:
         name: shared-library
         path: node-$TAG/out/Release/lib.target
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: shared-library
+        path: node-$TAG/out/Release/node-v$TAG-headers.tar.gz

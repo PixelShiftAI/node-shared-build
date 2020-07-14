@@ -4,4 +4,4 @@ import os
 import sys
 import pty
 
-pty.spawn(["python3"] + sys.argv[1:] + os.environ.get('OPTIONS', '').split(' '))
+pty.spawn(["python3", "configure.py"] + sys.argv[1:] + os.environ.get('OPTIONS', '').split(' '))

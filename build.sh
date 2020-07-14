@@ -19,14 +19,14 @@ download_and_extract() {
 
 build_android_arm64() {
   ./android-configure $ANDROID_NDK_HOME arm64 23
-  make tar-headers
   make -j4
+  make tar-headers
 }
 
 build_x86_64() {
   ./configure --dest-cpu x86_64
-  make tar-headers
   make -j4
+  make tar-headers
 }
 
 # Run in subshell 

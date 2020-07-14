@@ -22,7 +22,7 @@ build-android-arm64() {
   make -j4
 }
 
-build-x86-64() {
+build-linux-x86-64() {
   ./configure --dest-cpu x86_64
   make -j4
 }

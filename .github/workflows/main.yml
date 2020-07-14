@@ -11,11 +11,12 @@ jobs:
         node: [ 14.2.0 ]
         build: [linux-x86-64, android-arm64]
 
-    env:
-      ANDROID_NDK_HOME: $ANDROID_SDK_ROOT/ndk-bundle
-    
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set Android NDK
+      run: echo "::set-env name=ANDROID_NDK_HOME::$ANDROID_SDK_ROOT/ndk-bundle"
+                       
 
     - name: Build
       run: ./build.sh build-${{matrix.build}} ${{matrix.node}}

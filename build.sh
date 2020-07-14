@@ -2,7 +2,8 @@
 
 set -ex
 
-TAG=${1:-14.2.0}
+CMD=${1:-build_android}
+TAG=${2:-14.2.0}
 
 download_and_extract() {
   local FILENAME="v$TAG.tar.gz"
@@ -19,4 +20,4 @@ build_android() {
 
 # Run in subshell 
 download_and_extract > /dev/null
-(cd node-$TAG && build_android)
+(cd node-$TAG && $CMD)

@@ -17,8 +17,8 @@ download_and_extract() {
 }
 
 
-build-android-arm64() {
-  ./android-configure $ANDROID_NDK_HOME arm64 23
+build-android() {
+  ./android-configure $ANDROID_NDK_HOME $ANDROID_ABI 23
   make -j4
 }
 

@@ -14,6 +14,7 @@ download_and_extract() {
   curl -L https://github.com/nodejs/node/archive/${FILENAME} > $FILENAME
   tar zxvf "$FILENAME"
   cp configure node-$TAG/
+  cp android-configure node-$TAG/
 }
 
 

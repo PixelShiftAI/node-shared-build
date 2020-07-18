@@ -1,7 +1,0 @@
-#!/usr/bin/env python3
-
-import os
-import sys
-import pty
-
-pty.spawn(["python3", "configure.py"] + sys.argv[1:] + os.environ.get('OPTIONS', '').split(' '))

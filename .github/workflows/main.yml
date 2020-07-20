@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [ 14.2.0, 14.5.0 ]
-        abi: [ arm, arm64, x86, x86_64 ]
+        abi: [ arm64, x86_64 ]
 
     steps:
     - uses: actions/checkout@v2
